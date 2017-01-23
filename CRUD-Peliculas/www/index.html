@@ -1,29 +1,61 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-    <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-    <!--
-        Personalice la directiva de seguridad de contenido en la etiqueta meta como sea necesario. Agregue "unsafe-inline" a default-src para permitir JavaScript insertado.
-        Para obtener m�s detalles, consulte http://go.microsoft.com/fwlink/?LinkID=617521
-    -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>CRUDPeliculas</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Conectando con el dispositivo</p>
-                <p class="event received">El dispositivo est� preparado</p>
-            </div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" charset="utf-8" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>CRUDPeliculas</title>
+</head>
+<body>
+
+    <!--Página Menu-->
+    <div data-role="page" id="pgMenu" data-theme="b">
+        <div data-role="header">
+            <h1>PeliDB</h1>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
-    </body>
+        <div data-role="content">
+            <h1>Base de Datos</h1>
+            <h1>CRUD de Pelis</h1>
+            <h2>El recordatorio de tus películas indispensables</h2>
+            <ul data-role="listview">
+                <li data-corners="false" data-shadow="false" data-iconshadow="true"
+                    data-icon="arrow-r" data-iconpos="right" data-theme="c"
+                    class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-corner-top ui-btn-up-c"><a href="#pgMovie">Accede a tus películas</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h2>Holis soy el footer ^.^</h2>
+        </div>
+    </div>
+
+    <div data-role="page" id="pgMovie" data-theme="b">
+        <div data-role="header">
+            <!-- Panel lateral izquierdo -->
+            <div data-position="left" data-display="overlay" data-position-fixed="true" id="pgMovieLeftPnl"
+                 data-role="panel">
+                <ul data-role="listview" id="pgMovieLeftPnlLV">
+                    <li>
+                        <a data-transition="slide" href="#pgMenu"
+                           class="ui-btn ui-icon-carat-l ui-btn-icon-left">Volver</a>
+                    </li>
+                </ul>
+            </div>
+            <h1>PeliDB</h1>
+        </div>
+        <div data-role="content">
+
+
+
+        </div>
+    </div>
+
+    <!--Knights of the Square Table   Flying Circus   The Meaning of Life-->
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+</body>
 </html>
