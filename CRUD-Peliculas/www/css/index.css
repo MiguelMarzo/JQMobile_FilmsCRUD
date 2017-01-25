@@ -4,3 +4,8 @@
     width: 100%;
     text-align: center;
 }
+#nueva {
+    position: absolute;
+    margin-left: 0;
+    float: right;
+}
