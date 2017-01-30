@@ -15,7 +15,7 @@ Nueva.addMovie = function (MovieRec) {
     MovieRec.MovieName = MovieName;
     // Guardar el objeto JSON en la base de datos
     // definir la transacción a ejecutar
-    var tx = dbMoviesDatabase.transaction(["Movie"], "readwrite");
+    var tx = getDatabase().transaction(["Movie"], "readwrite");
     // Obtener los objetos para añadir un nuevo elemento
     var store = tx.objectStore("Movie");
     // añadir al almacenamiento de anteriores elementos
@@ -37,11 +37,33 @@ Nueva.addMovie = function (MovieRec) {
     }
     request.onerror = function (e) {
         // Mostramos un mensaje de notificación de error
-        toastr.error('No se ha podido añadir el elemento de manera exitosa.',
+        alert('No se ha podido añadir el elemento de manera exitosa.',
        'PeliDB');
     }
     $.mobile.loading("hide");
 };
+Nueva.pgAddMoviedisplayMovieR = function (MovieObj) {
+    $.mobile.loading("show", {
+        text: "Displaying records...",
+        textVisible: true,
+        textonly: false,
+        html: ""
+    });
+    var html = '';
+    var n;
+    for (n in MovieObj) {
+        var MovieRec = MovieObj[n];
+        var pkey = MovieRec.MovieName;
+        pkey = pkey.split('-').join(' ');
+        MovieRec.MovieName = pkey;
+        var nItem = getMovieLiRi();
+        nItem = nItem.replace(/Z2/g, n);
+        var nTitle = '';
+        nTitle = n.split('-').join(' ');
+        nItem = nItem.replace(/Z1/g, nTitle);
+        html += nItem;
+    }
+}
 
 // Funciones genéricas para añadir elementos:
 // - Borrado de la pantalla: Realiza el borrado de los elementos mostrados en el formulario al usuario

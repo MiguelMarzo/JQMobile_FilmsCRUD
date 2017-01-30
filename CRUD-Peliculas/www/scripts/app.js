@@ -15,6 +15,12 @@ $(function () {
         var noMovie = '<li id="noMovie">You have no movies</li>';
         // … Todo el código de la aplicación va aquí
 
+        getMovieLi = function () {
+            return MovieLi;
+        }
+        getMovieLiRi = function () {
+            return MovieLiRi;
+        }
         getMovieHdr = function () {
             return MovieHdr;
         }

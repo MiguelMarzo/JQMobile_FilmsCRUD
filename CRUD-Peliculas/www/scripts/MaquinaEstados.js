@@ -55,7 +55,7 @@ MaquinaEstados.MovieBindings = function () {
             e.preventDefault();
             e.stopImmediatePropagation();
             // Volver a la pantalla de listado de elementos
-            $.mobile.changePage('#pgMovie', { transition: pgtransition });
+            $.mobile.changePage('#pgMovie', { transition: getPgTransition });
 
         });
         // FIN NAV Vuelta atrás
@@ -67,7 +67,7 @@ MaquinaEstados.MovieBindings = function () {
             // Obtener los elementos del formulario y trasladarlos a un objeto
             var MovieRec = pgAddMovieGetRec();
             // Almacenar los objetos en la base de datos
-            app.addMovie(MovieRec);
+            Nueva.addMovie(MovieRec);
         });
         // FIN NAV Guardar
         //*** Add Page - End ***
@@ -98,7 +98,7 @@ MaquinaEstados.MovieBindings = function () {
             $('#pgAddMovie').data('from', 'pgMovie');
             // Mostrar la pantalla activa y las opciones de usuario
             $('#pgAddMovieheader h1').text('PeliBD > Añadir película');
-            $('#pgAddMovieMenu').show();
+            $('#pgAddMovie').show();
             // Navegar a la pantalla de añadir un nuevo elemento
             $.mobile.changePage('#pgAddMovie', { transition: getPgTransition });
         });
@@ -126,7 +126,7 @@ MaquinaEstados.MovieBindings = function () {
             // obtener el contenido de los controles de edición
             var MovieRec = pgEditMovieGetRec();
             // almacenar los registros actualizados en IndexedDB
-            app.updateMovie(MovieRec);
+            MaquinaEstados.updateMovie(MovieRec);
         });
         // Código ejectuado cuando se pulsa el boton de borrado desde la pantalla de edición
         // Click en botón de borrado
@@ -157,7 +157,7 @@ MaquinaEstados.MovieBindings = function () {
             var href = $(this).data('id');
             href = href.split(' ').join('-');
             // Lectura del elemento desde la base de datos y actualización de la pantalla
-            app.pgEditMovieeditMovie(href);
+            MaquinaEstados.pgEditMovieeditMovie(href);
         });
         //*** Edit Page - End ***
 
@@ -194,7 +194,7 @@ MaquinaEstados.checkForMovieStorage = function () {
         // Exten registros en la base de datos?
         if (!$.isEmptyObject(MovieObj)) {
             // SI existen, mostrarlos por pantalla
-            app.displayMovie(MovieObj);
+            Index.displayMovie(MovieObj);
         } else {
             // NO existes, mostramos el texto de ayuda
             $('#pgMovieList').html(getMovieHdr() + getNoMovie()).listview('refresh');
@@ -240,7 +240,7 @@ MaquinaEstados.pgAddMoviecheckForMovieStorageR = function () {
         // Existen más peliculas?
         if (!$.isEmptyObject(MovieObj)) {
             // encaso de que existan pasamos a visualizarlas
-            app.pgAddMoviedisplayMovieR(MovieObj);
+            Nueva.pgAddMoviedisplayMovieR(MovieObj);
         } else {
             // en caso de que no existan solo mostramos el texto de ayuda
             $('#pgAddMovieRightPnlLV').html(getMovieHdr() + getNoMovie()).listview('refresh');

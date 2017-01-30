@@ -25,7 +25,7 @@ Index.displayMovie = function (MovieObj) {
         pkey = pkey.split('-').join(' ');
         MovieRec.MovieName = pkey;
         // Definir una nueva lína de la información obtenida
-        var nItem = MovieLi;
+        var nItem = getMovieLi();;
         nItem = nItem.replace(/Z2/g, n);
         // Actualizar el título, puede que sea multilínea
         var nTitle = '';
@@ -46,7 +46,7 @@ Index.displayMovie = function (MovieObj) {
         html += nItem;
     }
     // Actualizar la vista con la nueva estructura HTML generada
-    $('#pgMovieList').html(MovieHdr + html).listview('refresh');
+    $('#pgMovieList').html(getMovieHdr() + html).listview('refresh');
     $.mobile.loading("hide");
 };
 /// FIN MOSTRAR ELEMENTOS REGISTRADOS EN LISTA DE ELEMENTOS
